@@ -1,0 +1,1073 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}My Website{% endblock %}</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/learner1.css' %}">
+
+</head>
+<style>
+    
+
+/* myapp/static/css/style.css */
+
+/* static/css/style.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Navbar container styling */
+.navbar-container {
+    background-color: #e9e4e4; /* Dark background color for navbar */
+}
+/* Centered section styling */
+.navbar-center {
+    flex: 1; /* Take up remaining space between brand and nav links */
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+}
+/* Course filter section styling */
+.course-filter {
+    display: flex;
+    align-items: center; /* Center items vertically within the form */
+}
+
+/* Form elements styling */
+.course-filter input {
+    padding: 10px; /* Padding for the input element */
+    border: 1px solid #ddd; /* Border styling */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 300px; /* Set a fixed width */
+}
+
+/* Search button styling */
+.search-button {
+    background: none; /* No background color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 10px; /* Spacing between input and button */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size for the icon */
+    color: #f04296; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Search button hover effect */
+.search-button:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Navbar styling */
+
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out items: brand on the left, nav links in the center */
+    padding: 10px 20px; /* Add padding around the navbar */
+    background-color: #a8defe85; /* Background color for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+    height: 50px;
+}
+
+/* Brand styling */
+.navbar-brand {
+    color: #6c6c6c; /* Text color */
+    font-size: 1.9em; /* Font size */
+    font-weight: bold; /* Font weight */
+}
+
+.navbar-brand span {
+    color: #f04296; /* Accent color for part of the brand */
+}
+
+/* Navbar items styling */
+.navbar-nav {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for horizontal alignment */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Space between items */
+}
+
+.navbar-nav .nav-link {
+    color: #6c6c6c; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Space around the text */
+    font-size: 1.3em; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #f08dbd; /* Darker background on hover */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 1200px; /* Adjust the height as needed */
+    background: url('{% static "images/learner-banner.png" %}') no-repeat center center;
+    background-size: cover;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-90%, -60%);
+    color: #fff;
+    text-align: left;
+}
+
+.banner-heading {
+    font-size: 70px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#000435;
+}
+
+.banner-subheading {
+    font-size: 24px;
+    color: #000435;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000435;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ADBBDA;
+}
+
+.hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #d1e7ec;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000435;
+        }
+
+        .hero-section p {
+            color: #000435;
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .btn-purchase {
+            background-color: #18C18A;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-purchase:hover {
+            background-color: #14a274;
+        }
+
+
+.footer {
+    background-color: #000435;
+    padding: 40px 20px;
+    color: #fff;
+    border-top: 2px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.footer-section p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #e9ecef;
+    color: #666;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-item {
+        margin: 10px 0;
+    }
+}
+.why-choose-us {
+    background-color: #ffffff; /* White background for the section */
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 12px; /* Rounded corners */
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); */
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.why-choose-us h2 {
+    font-size: 2.8em;
+    color: #9b1f53;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 30%;
+    box-sizing: border-box;
+    background: #ffffff; /* White background for each card */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px;
+    border: 2px solid #e0e0e0; /* Light border color */
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    max-width: 350px;
+    text-align: center;
+}
+
+.card:hover {
+    border-color: #007BFF; /* Highlight border on hover */
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007BFF; /* Circular background color */
+    border-radius: 50%; /* Circle shape */
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    color: #fff; /* White icon color */
+}
+
+.card h3 {
+    font-size: 1.6em;
+    color: #007BFF;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+}
+
+footer {
+    background-color: #000435;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+/* Our Features Section */
+.our-features {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 22%;
+    text-align: center;
+}
+
+.icon-circle {
+    background-color: #f73c92;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Ensure consistent font across the site */
+    background-color: #fff; /* Light background color */
+}
+
+.container {
+    width: 95%; /* Adjust the container width to 80% of the viewport */
+    max-width: 1300px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 60px 0; /* Add vertical padding */
+    background-color: #ffffff; /* White background for the container */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* Space between the columns */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px; /* Ensure a minimum width for each column */
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.main-heading {
+    font-size: 2.5rem; /* Large heading size */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+    line-height: 1.2; /* Adjust line height for better spacing */
+}
+
+.description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.features {
+    margin-top: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+    color: #000435; /* Pink color for the icon */
+    margin-right: 10px;
+}
+
+.feature-text h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.feature-text p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.about-us h2 {
+    font-size: 1.3rem; /* Same size as "Why us" */
+    font-weight: bold;
+    color: #000435;
+}
+
+.about-quote {
+    font-size: 2.5rem; /* Large quote size */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color:#000435;
+    line-height: 1.2;
+}
+
+.about-description {
+    font-size: 1.3rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #ff0066; /* Pink button color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ff3399; /* Slightly darker pink on hover */
+}
+
+/* Container for the testimonials section */
+/* Container for the testimonial section */
+/* Testimonials Section */
+.testimonial-section {
+    padding: 50px 0;
+    background-color:#addbf8;
+}
+
+.testimonial-heading {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #000435;
+    font-size: 1.5rem;
+}
+
+.testimonial-slider-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px;
+}
+
+.testimonial-slide img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20%;
+    margin-bottom: 15px;
+}
+
+/* Optional: Add navigation dots */
+.testimonial-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.testimonial-dots span {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.testimonial-dots .active {
+    background-color: #717171;
+}
+.testimonial-slide p,h4{
+    color: #000435;
+    font-size: 1.5rem;
+}
+
+
+/* Team Section */
+/* Team Section */
+.team-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.team-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff3399;
+}
+
+.team-header p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+
+.team-member img {
+    width: 60%;
+    height: auto;
+    border-radius: 40%;
+    margin-bottom: 15px;
+}
+
+.team-member h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-member h5 {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: #555;
+}
+.course-promo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px;
+    background-color: #f9f9f9;
+}
+
+.video-section {
+    position: relative;
+    width: 50%;
+}
+
+.video-section video {
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    border-radius: 10px;
+    object-fit: cover; /* Ensures the poster covers the whole video player */
+}
+
+
+.live-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+
+
+.content-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-1%, -60%);
+    color: #fff;
+    text-align: left;
+}
+
+/* Heading style */
+.content-section h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 1.4;
+}
+
+/* Highlighted word in the heading */
+.content-section .highlight-text {
+    background-color: #ff3399;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #000;
+}
+
+/* Paragraph styling */
+.content-section p {
+    font-size: 16px;
+    color: #666666;
+    margin: 20px 0;
+}
+
+/* Unordered list for the bullet points */
+.features-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Individual list items */
+.features-list li {
+    font-size: 24px;
+    color: #333333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Icon for the checkmark */
+.features-list .icon {
+    color: #ff3399;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.vedio-container {
+    position: relative;
+    width: 100%;
+    height: 1200px; /* Adjust the height as needed */
+    background: url('{% static "images/vedio-bannr.png" %}') no-repeat center center;
+    background-size: cover;
+}
+
+</style>
+
+<body>
+    <section>
+        
+        <div class="navbar-container">
+            <nav class="navbar">
+                <div class="navbar-brand">Learn<span>Me</span></div>
+                <div class="navbar-center">
+                    <section class="course-filter">
+                        <form method="get" action="{% url 'learnerApp:search_courses' %}">
+                            <input type="text" name="search" id="search" value="{{ request.GET.search }}" placeholder="Search courses">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learnerApp:course_list' %}">Courses</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learnerApp:profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item"></li>
+                        <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="banner-container">
+            <div class="banner-content">
+                <h1 class="banner-heading">Unlock your potential with our Online courses</h1>
+                <h3 class="banner-subheading">Expand your Knowledge and skills with our wide range of interactive courses</h3>
+                <form action="{% url 'learnerApp:course_list' %}" method="get">
+                    <button type="submit" class="btn btn-primary">Start Learning</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="popular-courses">
+        <div class="course-grid">
+            {% for course in courses %}
+                <div class="course-container">
+                    <a href="{% url 'course_detail' course.id %}">
+                        <div class="course-thumbnail">
+                            {% if course.thumbnail %}
+                                <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}">
+                                <!-- Debugging: Print the URL to check -->
+                                <p>{{ course.thumbnail.url }}</p>
+                            {% else %}
+                                <img src="{% static 'images/default-thumbnail.jpeg' %}" alt="Default Thumbnail">
+                            {% endif %}
+                        </div>
+                        <div class="course-details">
+                            <h4>{{ course.title }}</h4>
+                            <p>{{ course.description|slice:":100" }}...</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    
+    
+    <!-- Benefits Section -->
+    <section class="why-us-section">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="column">
+                    <h1 class="section-subtitle">Why us</h1> <!-- Small "Why us" heading -->
+                    <h1 class="main-heading">Learn from anywhere, anytime, with the best resources at your fingertips!</h1>
+                    <p class="description">We offer a seamless learning experience that adapts to your schedule and needs, ensuring you can learn effectively no matter where you are.</p>
+                    
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">➤</span>
+                            <div class="feature-text">
+                                <h4> Tailored Learning Paths</h4>
+                                <p>Our platform provides personalized learning paths designed to suit your unique needs and goals, helping you stay on track and achieve success.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <span class="feature-icon">➤</span>
+                            <div class="feature-text">
+                                <h4>Expert Assistance on Demand</h4>
+                                <p>Get instant access to professional tutors and industry experts whenever you need guidance, ensuring you never feel stuck in your learning journey.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <span class="feature-icon">➤</span>
+                            <div class="feature-text">
+                                <h4>Flexibility to Learn at Your Own Pace</h4>
+                                <p>With 24/7 access to our courses, you can learn whenever it fits into your schedule, making education convenient and stress-free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Right Column -->
+                <div class="column">
+                    <h1>About us</h1>
+                    <blockquote class="about-quote">
+                        "We empower you to reach your full potential with expert-guided learning."
+                    </blockquote>
+                    <p class="about-description">Our mission is to provide high-quality education that’s accessible to everyone. With a focus on personalized learning and expert support, we ensure you have all the tools you need to succeed in today’s competitive world.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    
+    
+    <!-- Testimonials -->
+<section class="testimonial-section">
+    <div class="testimonial-heading">
+        <h1>What our Learners Say</h1>
+    </div>
+    <div class="testimonial-slider-container">
+        <div class="testimonial-slider">
+            <div class="testimonial-slide">
+                <img src="{% static 'images/testimonial.jpeg' %}" alt="testimonial 1">
+                <p>"The courses are excellent and have really helped me advance in my career."</p>
+                <h4>Jane Doe</h4>
+                <p>Web Developer</p>
+            </div>
+            <div class="testimonial-slide">
+                <img src="{% static 'images/testimonial.jpeg' %}" alt="testimonial 1">
+                <p>"I learned so much in such a short time. Highly recommended!"</p>
+                <h4>John Smith</h4>
+                <p>Software Engineer</p>
+            </div>
+            <div class="testimonial-slide">
+                <img src="{% static 'images/testimonial.jpeg' %}" alt="testimonial 1">
+                <p>"The courses are excellent and have really helped me advance in my career."</p>
+                <h4>Sana</h4>
+                <p>Web Developer</p>
+            </div>
+            <div class="testimonial-slide">
+                <img src="{% static 'images/testimonial.jpeg' %}" alt="testimonial 1">
+                <p>"A great experience overall. The content was very engaging."</p>
+                <h4>Alice Johnson</h4>
+                <p>Data Scientist</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="vedio-container">
+        
+        
+            <div class="content-section">
+                <h2>Thousand of Top <span class="highlight-text">Courses</span> Now In One Place</h2>
+                <p>
+                    Groove’s intuitive shared inbox makes it easy for team members to organize, prioritize, and collaborate. In this episode of the Smashing Pod, we’re talking about Web Platform Baseline.
+                </p>
+                <ul class="features-list">
+                    <li><span class="icon">✔</span> The Most World-Class Instructors</li>
+                    <li><span class="icon">✔</span> Access Your Class Anywhere</li>
+                    <li><span class="icon">✔</span> Flexible Course Plan</li>
+                </ul>
+                <form action="{% url 'learnerApp:course_list' %}" method="get">
+                    <button type="submit" class="btn btn-primary">Start Exploring</button>
+                </form>
+            </div>
+           
+        
+    </div>
+   
+</section>
+
+<hr style="color: #f04296;">
+
+<section class="our-features">
+    <h1>Our Features</h1>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="icon-circle">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3>Top-Quality Instructors</h3>
+            <p>Learn from industry leaders and experienced professionals who are dedicated to helping you achieve your educational goals. Our tutors are carefully selected for their expertise and passion for teaching, ensuring you receive top-notch guidance every step of the way.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <h3>Trusted & Verified Educators</h3>
+            <p>Trust in the quality and authenticity of your learning experience. All our instructors undergo a rigorous verification process to ensure their credentials and teaching methods meet our high standards, providing you with a reliable and trustworthy education.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle">
+                <i class="fas fa-money-check-alt"></i>
+            </div>
+            <h3>Interactive Learning Tools</h3>
+            <p>Enhance your learning experience with our advanced interactive tools and resources. From engaging multimedia content to real-time quizzes and simulations, our platform offers a range of features designed to make your education more dynamic and effective.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <h3>Cost-Effective Learning</h3>
+            <p>We believe that quality education should be accessible to everyone. Our competitive pricing ensures that you can access top-tier learning resources without breaking the bank, making it easier for you to achieve your goals.</p>
+        </div>
+    </div>
+</section>
+    
+    
+    
+<section class="team-section">
+    <div class="team-header">
+        <h2>Meet Our Team</h2>
+        <p>Our dedicated team of educators and professionals are committed to providing you with the best learning experience. Get to know the experts behind our platform.</p>
+    </div>
+    
+    <div class="team-container">
+        <div class="team-member">
+            <img src="{% static 'images/testimonial.jpeg' %}">
+            <h4>Jeffrey Brown</h4>
+            <h5>Lead Instructor</h5>
+            <p>Jeffrey brings years of experience in curriculum development and online education. His innovative teaching methods make learning engaging and effective.</p>
+            
+        </div>
+        <div class="team-member">
+            <img src="{% static 'images/testimonial.jpeg' %}">
+            <h4>Ann Richmond</h4>
+            <h5>Senior Course Developer</h5>
+            <p>Ann specializes in creating interactive and engaging course materials that enhance the learning experience. Her courses are designed to be both informative and enjoyable.</p>
+            
+        </div>
+        <div class="team-member">
+            <img src="{% static 'images/testimonial.jpeg' %}">
+            <h4>Alex Greenfield</h4>
+            <h5>Technical Expert</h5>
+            <p>Alex ensures our platform runs smoothly and efficiently. With a strong background in technology and support, Alex is dedicated to providing technical excellence and user support.</p>
+            
+        </div>
+    </div>
+</section>
+
+<section class="hero-section">
+    <p>Your Gateway to World-Class Learning</p>
+    <h1>Unlock Your Potential with Our E-Learning Platform</h1>
+    <a href="{% url 'signup' %}" class="btn btn-signup">Join Now</a>
+
+   
+</section>
+
+    
+                
+    
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>At LearnMe, we are committed to providing top-quality education and resources to help you achieve your learning goals. Our team of experts is dedicated to delivering engaging and effective courses to empower learners around the world.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><img src="{% static 'images/social_icon_facebook.png' %}" alt="Facebook"></a>
+                <a href="#" aria-label="Twitter"><img src="{% static 'images/social_icon_twitter.png' %}" alt="Twitter"></a>
+                <a href="#" aria-label="LinkedIn"><img src="{% static 'images/social_icon_linkedin.png' %}" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@yourplatform.com">info@yourplatform.com</a></p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 Learning Lane, Education City, ED 45678</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 [Your Platform Name]. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    let slider = document.querySelector('.testimonial-slider');
+    let slides = document.querySelectorAll('.testimonial-slide');
+    let currentIndex = 0;
+    let totalSlides = slides.length;
+    
+    // Automatically slide every 5 seconds
+    setInterval(function() {
+        currentIndex++;
+        if (currentIndex === totalSlides) {
+            currentIndex = 0;
+        }
+        slider.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+    }, 5000);
+});
+
+    </script>
+    
+</body>
+</html>

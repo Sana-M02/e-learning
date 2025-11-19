@@ -1,0 +1,23 @@
+{% extends 'base_admin.html' %}
+{% block title %}Instructor Profile{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Instructor: {{ instructor.user.username }}</h2>
+    <p><strong>Email:</strong> {{ instructor.user.email }}</p>
+    <p><strong>Position:</strong> {{ instructor.position }}</p>
+    <p><strong>Qualifications:</strong> {{ instructor.qualifications }}</p>
+    <p><strong>Bio:</strong> {{ instructor.bio }}</p>
+    <p><strong>Average Rating:</strong> {{ instructor.average_rating|floatformat:1 }}</p>
+    <p><strong>Total Reviews:</strong> {{ instructor.reviews.count }}</p>
+  
+
+    <h4 class="mt-4">Courses</h4>
+    <ul>
+        {% for course in instructor.courses.all %}
+        <li>{{ course.title }}</li>
+        {% empty %}
+        <li>No courses assigned.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

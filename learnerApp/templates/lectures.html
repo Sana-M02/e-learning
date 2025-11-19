@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/lecture.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    * {
+    box-sizing: border-box;
+}
+.navbar{
+    height: 100px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 50px;
+}
+
+/* Left Sidebar - Course Content */
+.course-sidebar {
+    flex: 0 0 22%; /* sidebar takes 22% */
+    max-width: 30%;
+    background-color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+}
+.course-sidebar,
+.course-video-section {
+    max-width: 100%;
+    flex: none;
+}
+
+.curriculum-item {
+    margin-bottom: 20px;
+}
+
+.section-toggle {
+    display: block;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.lectures-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.lesson-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lesson-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Right Content - Video and Course Details */
+.course-video-section {
+    flex: 2;
+    max-width: 75%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.video-header h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#videoContainer {
+    margin-bottom: 20px;
+}
+
+.course-details {
+    margin-top: 20px;
+}
+
+.course-details h3 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.learning-outcomes, .course-features {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.instructor-details {
+    display: flex;
+    margin-top: 20px;
+}
+
+.instructor-profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.instructor-info h4 {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        flex-direction: column;
+    }
+    
+    .course-sidebar, .course-video-section {
+        max-width: 100%;
+        flex: none;
+    }
+}
+p{
+    color: #848080;
+    font-size: large;
+}
+.ask-doubts-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fffcfc;
+    border-radius: 8px;
+    width: 600px;
+}
+
+.ask-doubts-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#doubtForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#doubtInput {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+.submit-doubt-btn {
+    padding: 10px 20px;
+    background-color: #353070;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-doubt-btn:hover {
+    background-color: #b1bde2;
+}
+
+.submission-message {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.tab-button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 16px;
+}
+
+.tab-button.active {
+    border-bottom: 2px solid #007bff;
+    background-color: white;
+    font-weight: bold;
+}
+
+.tab-section {
+    display: none;
+}
+
+.tab-section.active {
+    display: block;
+}
+
+.course-details, .assignment-item, .quiz-item {
+    margin: 20px 0;
+}
+
+</style>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar">
+            <div class="navbar-brand">Learn<span>Me</span></div>
+            <div class="navbar-center">
+                <section class="course-filter">
+                    <form method="get" action="{% url 'learnerApp:search_courses' %}">
+                        <input type="text" name="search" id="search" value="{{ request.GET.search }}" placeholder="Search courses">
+                        <button type="submit" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </section>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+               
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'learnerApp:profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+
+    <body>
+        <div class="course-container">
+            <!-- Course Sidebar (Lecture Names) -->
+            <div class="course-sidebar">
+                <h3>Course Content</h3>
+                <div class="curriculum-section">
+                    {% for section in course.sections.all %}
+                        <div class="curriculum-item">
+                            <button class="section-toggle">{{ section.title }}</button>
+                            <ul class="lectures-list">
+                                {% for lesson in section.lessons.all %}
+                                    <li class="lesson-item" data-video-url="{{ lesson.video_url }}">
+                                        <i class="fas fa-play-circle"></i> {{ lesson.title }} 
+                                        <span>{{ lesson.duration }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <!-- Course Video Section -->
+            <div class="course-video-section">
+                <div class="video-header">
+                    <h2>{{ course.title }}</h2>
+                </div>
+                <div id="videoContainer">
+    <div id="videoContainer">
+    <iframe
+        id="youtubePlayer"
+        width="100%"
+        height="600"  
+        style="border-radius: 12px;"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+</div>
+
+
+    
+           <!-- Tabs for About, Assignments, and Quizzes -->
+<div class="tabs">
+    <button class="tab-button active" data-tab="about">About</button>
+    <button class="tab-button" data-tab="assignments">Assignments</button>
+    <button class="tab-button" data-tab="quizzes">Quizzes</button>
+</div>
+
+<!-- Tab Content Sections -->
+<div class="tab-content">
+    
+    <!-- About Tab -->
+    <div id="about" class="tab-section active">
+        <div class="course-details">
+            <h1>About</h1>
+            <p>{{ course.description }}</p>
+
+            <h3>What You Will Learn</h3>
+            <p>{{ course.What_you_will_learn }}</p>
+
+            <h3>Requirements</h3>
+            <p>{{ course.requirements }}</p>
+
+            <h3>Instructor</h3>
+            {% for instructor in course.instructors.all %}
+                <div class="instructor-details">
+                    <img src="{{ instructor.profile_picture.url }}" alt="{{ instructor.name }}" class="instructor-profile">
+                    <div class="instructor-info">
+                        <h4>{{ instructor.user.username }}</h4>
+                        <p class="position">{{ instructor.position }}</p>
+                        <p>{{ instructor.bio }}</p>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Assignments Tab -->
+    <div id="assignments" class="tab-section" style="display:none;">
+        <h1>Assignments</h1>
+        {% for assignment in course.assignments.all %}
+            <div class="assignment-item">
+                <h3>{{ assignment.title }}</h3>
+                <p>{{ assignment.instructions }}</p>
+                <p>Due Date: {{ assignment.due_date }}</p>
+                <!-- Assignment Submission Form -->
+                <form method="POST" enctype="multipart/form-data" action="{% url 'learnerApp:submit_assignment' assignment.id %}">
+    {% csrf_token %}
+    <label for="submission_type">Submission Type:</label>
+    <select name="submission_type" required>
+        <option value="text">Text</option>
+        <option value="file">File</option>
+        <option value="link">Link</option>
+    </select>
+
+    <div class="submission-field">
+        <textarea name="text_submission" placeholder="Enter text"></textarea>
+        <input type="file" name="file_submission">
+        <input type="url" name="link_submission" placeholder="Enter URL">
+    </div>
+
+    <button type="submit">Submit Assignment</button>
+</form>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Quizzes Tab -->
+    <div id="quizzes" class="tab-section" style="display:none;">
+        <h1>Quizzes</h1>
+        {% for quiz in course.quizzes.all %}
+            <div class="quiz-item">
+                <h3>{{ quiz.title }}</h3>
+                <p>{{ quiz.description }}</p>
+                <a href="{% url 'start_quiz' quiz.id %}" class="btn-start-quiz">Start Quiz</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // --- VIDEO PLAYER LOGIC ---
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    const lessonItems = document.querySelectorAll('.lesson-item');
+
+    lessonItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const videoUrl = this.getAttribute('data-video-url');
+
+            const videoIdMatch = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+            if (videoIdMatch && videoIdMatch[1]) {
+                youtubePlayer.src = `https://www.youtube.com/embed/${videoIdMatch[1]}?autoplay=1`;
+            } else {
+                alert("Invalid YouTube URL. Please use a proper link.");
+            }
+        });
+    });
+
+
+    // --- TAB SWITCHING LOGIC ---
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabSections.forEach(section => section.style.display = 'none');
+
+            button.classList.add('active');
+            document.getElementById(targetTab).style.display = 'block';
+        });
+    });
+});
+</script>

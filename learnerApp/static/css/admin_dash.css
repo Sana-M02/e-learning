@@ -1,0 +1,99 @@
+/* Reset some basic styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #eef1f6; /* Light background for contrast */
+}
+
+/* Main title styling */
+h1 {
+    color: #2c3e50; /* Darker shade for better readability */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Dashboard statistics styling */
+.dashboard-statistics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.stat-box {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 calc(30% - 20px); /* Adjusted for three boxes in a row */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-box h2 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #2980b9; /* Blue color for headings */
+}
+
+.stat-box p {
+    font-size: 2em;
+    color: #34495e; /* Darker text for better contrast */
+    font-weight: bold;
+}
+
+/* Hover effect for stat boxes */
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Recent sections styling */
+h3 {
+    margin-top: 30px;
+    color: #2c3e50;
+    border-bottom: 2px solid #2980b9; /* Bottom border for section titles */
+    padding-bottom: 10px;
+}
+
+/* List styling for recent items */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for list items */
+ul li:hover {
+    background-color: #f2f4f8; /* Light background on hover */
+}
+
+/* Chart styling */
+canvas {
+    margin-top: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stat-box {
+        flex: 1 1 calc(45% - 20px); /* Two boxes in a row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-box {
+        flex: 1 1 100%; /* One box in a row on very small screens */
+    }
+}

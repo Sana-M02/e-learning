@@ -1,0 +1,38 @@
+<!-- templates/profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>User Profile</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4>Profile Details</h4>
+            
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ userdetails.phone|default:"Not provided" }}</p>
+            <p><strong>Address:</strong> {{ userdetails.address|default:"Not provided" }}</p>
+            <a href="{% url 'learnerApp:create_or_update' %}" class="btn btn-primary">Update Profile</a>
+        </div>
+    </div>
+
+    <div>
+        <h2>Enrolled Courses</h2>
+        {% if enrollments %}
+            <ul>
+                {% for enrollment in enrollments %}
+                    <li>
+                        <h3>{{ enrollment.course.title }}</h3>
+                        <p>{{ enrollment.course.description }}</p>
+                        <a href="{% url 'learnerApp:lectures' enrollment.course.id %}">Go to Lectures</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You are not enrolled in any courses yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

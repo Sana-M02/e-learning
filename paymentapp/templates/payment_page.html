@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .enroll-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-button:hover {
+            color: #ff3333;
+        }
+
+        h2, h3, .price {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 26px;
+            color: #271b75;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .razorpay-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+     <div class="enroll-modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">✖</button>
+
+            <h2>{{ course.title }}</h2>
+            <div class="price">₹{{ course.price }}</div>
+
+            <h3>Your course fee includes:</h3>
+            <ul>
+                <li>Access to course materials, including videos, readings, and forums</li>
+                <li>Access to graded assignments</li>
+                <li>Final grade at the end of the course</li>
+                <li>Shareable Course Certificate</li>
+            </ul>
+
+            <div class="razorpay-button">
+                <button id="rzp-button">Continue to Enroll</button>
+            </div>
+
+            
+            <form id="payment-form" method="POST" action="{% url 'paymentapp:payment_success' %}">
+    {% csrf_token %}
+    <input type="hidden" name="razorpay_order_id" id="order_id">
+    <input type="hidden" name="razorpay_payment_id" id="payment_id">
+    <input type="hidden" name="razorpay_signature" id="signature">
+
+</form>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "{{ razorpay_key }}",
+        "amount": "{{ amount }}",
+        "currency": "INR",
+        "name": "{{ course.title }}",
+        "description": "Course Enrollment",
+        "order_id": "{{ order_id }}",
+        "handler": function (response) {
+            console.log("✅ Razorpay Handler Triggered");
+            console.log("Response:", response);
+
+            
+            document.getElementById('order_id').value = response.razorpay_order_id;
+            document.getElementById('payment_id').value = response.razorpay_payment_id;
+            document.getElementById('signature').value = response.razorpay_signature;
+            document.getElementById('payment-form').submit();
+        },
+        "prefill": {
+            "name": "{{ request.user.username }}",
+            "email": "{{ request.user.email }}"
+        },
+        "theme": {
+            "color": "#007BFF"
+        }
+    };
+
+    var rzp = new Razorpay(options);
+    document.getElementById('rzp-button').onclick = function (e) {
+        rzp.open();
+        e.preventDefault();
+    };
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Manage Enrollments{% endblock %}
+
+{% block content %}
+<h1>Enrollments</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Course</th>
+            <th>Date Enrolled</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for enrollment in enrollments %}
+        <tr>
+            <td>{{ enrollment.id }}</td>
+            <td>{{ enrollment.user }}</td>
+            <td>{{ enrollment.course }}</td>
+            <td>{{ enrollment.date_enrolled }}</td>
+            <td>{{ enrollment.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

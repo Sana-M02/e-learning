@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Navbar container styling */
+.navbar-container {
+    background-color: #e9e4e4; /* Dark background color for navbar */
+}
+/* Centered section styling */
+.navbar-center {
+    flex: 1; /* Take up remaining space between brand and nav links */
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+}
+/* Course filter section styling */
+.course-filter {
+    display: flex;
+    align-items: center; /* Center items vertically within the form */
+}
+
+/* Form elements styling */
+.course-filter input {
+    padding: 10px; /* Padding for the input element */
+    border: 1px solid #ddd; /* Border styling */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 300px; /* Set a fixed width */
+}
+
+/* Search button styling */
+.search-button {
+    background: none; /* No background color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 10px; /* Spacing between input and button */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size for the icon */
+    color: #f04296; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Search button hover effect */
+.search-button:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Navbar styling */
+
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out items: brand on the left, nav links in the center */
+    padding: 10px 20px; /* Add padding around the navbar */
+    background-color: #a8defe85; /* Background color for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+    height: 50px;
+}
+
+/* Brand styling */
+.navbar-brand {
+    color: #6c6c6c; /* Text color */
+    font-size: 1.9em; /* Font size */
+    font-weight: bold; /* Font weight */
+}
+
+.navbar-brand span {
+    color: #f04296; /* Accent color for part of the brand */
+}
+
+/* Navbar items styling */
+.navbar-nav {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for horizontal alignment */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Space between items */
+}
+
+.navbar-nav .nav-link {
+    color: #6c6c6c; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Space around the text */
+    font-size: 1.3em; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #f08dbd; /* Darker background on hover */
+    border-radius: 4px; /* Rounded corners */
+}

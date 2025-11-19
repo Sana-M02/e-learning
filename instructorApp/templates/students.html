@@ -1,0 +1,44 @@
+{% extends 'base_instructor.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mb-4">📊 Enrolled Students</h2>
+
+    {% if enrollments %}
+        <table class="table table-bordered table-striped table-hover shadow">
+            <thead class="table-dark">
+                <tr>
+                    <th>Course</th>
+                    <th>Student</th>
+                    <th>Email</th>
+                    <th>Enrollment Date</th>
+                    <th>Last Login</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enrollment in enrollments %}
+                    <tr>
+                        <td>{{ enrollment.course.title }}</td>
+                        <td>{{ enrollment.user.username }}</td>
+                        <td>{{ enrollment.user.email }}</td>
+                        <td>{{ enrollment.enrollment_date|date:"M d, Y" }}</td>
+                        <td>
+                            {% if enrollment.user.last_login %}
+                                {{ enrollment.user.last_login|date:"M d, Y H:i" }}
+                            {% else %}
+                                Never
+                            {% endif %}
+                        </td>
+                        <td>{{ enrollment.progress|default:"0.00" }}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning">No students enrolled in your courses yet.</div>
+    {% endif %}
+</div>
+
+{% endblock %}

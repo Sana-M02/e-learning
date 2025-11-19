@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block content %}
+
+
+<section class="no-results">
+    <h2>No Results Found</h2>
+    <p>Sorry, but no courses matched your search for "<strong>{{ query }}</strong>".</p>
+    <p>Please try using different keywords or check back later.</p>
+    <a href="{% url 'home' %}" class="button">Return to Home</a>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,387 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Navbar container styling */
+.navbar-container {
+    background-color: #e9e4e4; /* Dark background color for navbar */
+}
+/* Centered section styling */
+.navbar-center {
+    flex: 1; /* Take up remaining space between brand and nav links */
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+}
+/* Course filter section styling */
+.course-filter {
+    display: flex;
+    align-items: center; /* Center items vertically within the form */
+}
+
+/* Form elements styling */
+.course-filter input {
+    padding: 10px; /* Padding for the input element */
+    border: 1px solid #ddd; /* Border styling */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 300px; /* Set a fixed width */
+}
+
+/* Search button styling */
+.search-button {
+    background: none; /* No background color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 10px; /* Spacing between input and button */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size for the icon */
+    color: #f04296; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Search button hover effect */
+.search-button:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Navbar styling */
+
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out items: brand on the left, nav links in the center */
+    padding: 10px 20px; /* Add padding around the navbar */
+    background-color: #a8defe85; /* Background color for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+    height: 50px;
+}
+
+/* Brand styling */
+.navbar-brand {
+    color: #6c6c6c; /* Text color */
+    font-size: 1.9em; /* Font size */
+    font-weight: bold; /* Font weight */
+}
+
+.navbar-brand span {
+    color: #f04296; /* Accent color for part of the brand */
+}
+
+/* Navbar items styling */
+.navbar-nav {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for horizontal alignment */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Space between items */
+}
+
+.navbar-nav .nav-link {
+    color: #6c6c6c; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Space around the text */
+    font-size: 1.3em; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #f08dbd; /* Darker background on hover */
+    border-radius: 4px; /* Rounded corners */
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.course-container {
+    display: flex;
+}
+
+/* General Styles for Sidebar */
+.course-sidebar {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    padding: 20px; /* Spacing inside the sidebar */
+    width: 450px; /* Width of the sidebar */
+    position: sticky; /* Stick to the top */
+    top: 20px; /* Space from the top */
+}
+
+/* Section Title */
+.course-sidebar h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333; /* Darker text for contrast */
+}
+
+/* Curriculum Sections */
+.curriculum-section {
+    margin-bottom: 20px; /* Space between sections */
+}
+
+/* Section Item */
+.curriculum-item {
+    margin-bottom: 10px; /* Space between items */
+}
+
+/* Section Toggle Button */
+.section-toggle {
+   
+    border: none;
+    color: rgb(70, 68, 168);
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Lessons List */
+.lectures-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0;
+}
+
+/* Lesson Item */
+.lectures-list li {
+    padding: 20px;
+    border-bottom: 1px solid #ddd; /* Divider line */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+}
+
+.lectures-list li:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+}
+
+/* Lesson Title and Duration */
+.lectures-list i {
+    margin-right: 10px; /* Space between icon and text */
+    color: #007bff; /* Primary color for the icon */
+}
+
+.lectures-list span {
+    float: right; /* Align duration to the right */
+    color: #666; /* Gray color for duration */
+    font-size: 0.9em; /* Slightly smaller text */
+}
+
+
+.tab-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.video-player {
+    margin-top: 20px;
+}
+
+.video-player video {
+    width: 100%;
+}
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Individual tab buttons */
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.tab-button.active {
+    background-color: #007bff; /* Background color for active tab */
+    color: #fff; /* Text color for active tab */
+    border-bottom: 2px solid #007bff; /* Bottom border for active tab */
+}
+
+.tab-button:hover {
+    background-color: #e9ecef; /* Background color on hover */
+}
+.instructor-pic {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Ensure height matches width to maintain aspect ratio */
+    object-fit: cover; /* Ensures the image covers the box without distortion */
+    border-radius: 50%; /* Makes the image round */
+    margin-right: 0.5rem; /* Adjust margin between image and text */
+}
+
+
+/* Ensure this CSS is included in your stylesheet or within a <style> tag in the HTML head */
+
+#instructors {
+    padding: 20px; /* Add padding around the section */
+}
+
+.instructor-details {
+    display: flex; /* Align children horizontally */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Add spacing between instructor details */
+    padding: 50px; /* Add padding inside each instructor detail box */
+    border-radius: 10px; /* Rounded corners for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background-color: #fff; /* Background color of the box */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+}
+
+.instructor-details:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect on hover */
+}
+
+.instructor-profile {
+    width: 280px; /* Adjust size as needed */
+    height: 280px; /* Adjust size as needed */
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    margin-right: 20px; /* Space between the image and the details */
+    border: 2px solid #ddd; /* Optional: add a border around the image */
+}
+
+.instructor-info {
+    max-width: 500px; /* Adjust width as needed */
+}
+
+.instructor-info h3 {
+    margin: 30px; /* Remove default margin */
+    font-size: 2.5rem; /* Adjust font size as needed */
+    color: #333; /* Text color for the name */
+    font-weight: bolder;
+}
+
+.instructor-info p {
+    margin: 0 30px ; /* Add vertical spacing between paragraphs */
+    font-size: 1.4rem; /* Adjust font size as needed */
+    color: #666; /* Text color for other information */
+}
+/* General styles for the course curriculum section */
+#curriculum {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#curriculum h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#curriculum p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style for each curriculum item */
+.curriculum-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.curriculum-item.locked {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.curriculum-item .play-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-right: 15px;
+}
+
+.curriculum-info {
+    flex: 1;
+}
+
+.curriculum-info h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.curriculum-info p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Style for video items within a curriculum item */
+.video-item {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.video-item p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.video-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.video-item a:hover {
+    text-decoration: underline;
+}
+
+.video-item .duration {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Style for locked content */
+.locked-message {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.locked-link {
+    color: #e74c3c;
+    font-weight: bold;
+}

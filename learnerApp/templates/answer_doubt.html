@@ -1,0 +1,16 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+  <h2>Answer Doubt</h2>
+  <p><strong>Asked by:</strong> {{ doubt.user.username }}</p>
+  <p><strong>Course:</strong> {{ doubt.course.title }}</p>
+  <p><strong>Lesson:</strong> {{ doubt.lesson.title }}</p>
+  <p><strong>Question:</strong> {{ doubt.question }}</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="answer_text">Your Answer:</label><br>
+    <textarea name="answer_text" rows="6" style="width:100%" required></textarea><br><br>
+    <button type="submit">Submit Answer</button>
+  </form>
+{% endblock %}

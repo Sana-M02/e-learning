@@ -1,0 +1,16 @@
+{% extends 'base_instructor.html' %}
+
+{% block content %}
+    <h2>Enrolled Students</h2>
+    {% if enrollments %}
+        <ul>
+            {% for enrollment in enrollments %}
+                <li>
+                    <strong>{{ enrollment.student.username }}</strong> enrolled in <em>{{ enrollment.course.title }}</em>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No students have enrolled yet.</p>
+    {% endif %}
+{% endblock %}

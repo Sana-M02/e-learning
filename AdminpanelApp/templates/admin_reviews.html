@@ -1,0 +1,29 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Feedback & Reviews{% endblock %}
+
+{% block content %}
+<h1>Feedback & Reviews</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Course</th>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Review</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.id }}</td>
+            <td>{{ review.course }}</td>
+            <td>{{ review.user }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.comment }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

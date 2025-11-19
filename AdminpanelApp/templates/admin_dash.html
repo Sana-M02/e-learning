@@ -1,0 +1,79 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<!-- Load Bootstrap Icons & Animate.css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard Overview</h2>
+    <div class="row g-4">
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-primary text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-journal-bookmark-fill"></i> Total Courses</h5>
+                    <p class="display-6">{{ total_courses }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-success text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-person-badge-fill"></i> Total Instructors</h5>
+                    <p class="display-6">{{ total_instructors }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-info text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-person-lines-fill"></i> Total Enrollments</h5>
+                    <p class="display-6">{{ total_enrollments }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-dark bg-warning text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-currency-rupee"></i> Total Payments</h5>
+                    <p class="display-6">{{ total_payments }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-secondary text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> Average Rating</h5>
+                    <p class="display-6">{{ average_rating|floatformat:1 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-dark text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-chat-left-text-fill"></i> Total Reviews</h5>
+                    <p class="display-6">{{ total_reviews }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card text-white bg-danger text-center shadow animate__animated animate__fadeIn">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-people-fill"></i> Total Users</h5>
+                    <p class="display-6">{{ total_users }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

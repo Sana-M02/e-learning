@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="text-center mt-5 pt-5">
+        <img src="{% static 'images/success.svg' %}" class="img-fluid" style="height:200px" alt="Payment Success">
+
+        <h2 class="mt-4">Thank you! Your payment has been received.</h2>
+        <p>You have been successfully enrolled in the course.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-3">Go to Home</a>
+    </div>
+</body>
+</html>
+

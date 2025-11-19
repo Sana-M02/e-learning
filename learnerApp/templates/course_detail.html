@@ -1,0 +1,466 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Navbar container styling */
+.navbar-container {
+    background-color: #e9e4e4; /* Dark background color for navbar */
+}
+/* Centered section styling */
+.navbar-center {
+    flex: 1; /* Take up remaining space between brand and nav links */
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+}
+/* Course filter section styling */
+.course-filter {
+    display: flex;
+    align-items: center; /* Center items vertically within the form */
+}
+
+/* Form elements styling */
+.course-filter input {
+    padding: 10px; /* Padding for the input element */
+    border: 1px solid #ddd; /* Border styling */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 300px; /* Set a fixed width */
+}
+
+/* Search button styling */
+.search-button {
+    background: none; /* No background color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 10px; /* Spacing between input and button */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size for the icon */
+    color: #f04296; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Search button hover effect */
+.search-button:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Navbar styling */
+
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out items: brand on the left, nav links in the center */
+    padding: 10px 20px; /* Add padding around the navbar */
+    background-color: #a8defe85; /* Background color for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+    height: 50px;
+}
+
+/* Brand styling */
+.navbar-brand {
+    color: #6c6c6c; /* Text color */
+    font-size: 1.9em; /* Font size */
+    font-weight: bold; /* Font weight */
+}
+
+.navbar-brand span {
+    color: #f04296; /* Accent color for part of the brand */
+}
+
+/* Navbar items styling */
+.navbar-nav {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for horizontal alignment */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Space between items */
+}
+
+.navbar-nav .nav-link {
+    color: #6c6c6c; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Space around the text */
+    font-size: 1.3em; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #f08dbd; /* Darker background on hover */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Primary button styling (paid enroll) */
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Success button styling (free enroll) */
+.btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+.thumbnail{
+    width:100%;
+    height: 500px;
+}
+.course-info{
+    font-size: 20px;
+}
+.button-container {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center items horizontally */
+    margin-top: 10px; /* Add space above the buttons */
+}
+
+.btn {
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px 20px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+}
+
+.btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker shade for hover effect */
+}
+
+.curriculum-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    padding: 10px;
+    border-left: 4px solid #f04296;
+}
+
+.lecture-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.lecture-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.lecture-icon {
+    color: #f04296;
+    margin-right: 10px;
+}
+
+.lecture-title {
+    flex-grow: 1;
+    font-weight: 500;
+}
+
+.lecture-duration {
+    color: #666;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+
+</style>
+<body>
+
+    <section>
+        <div class="navbar-container">
+            <nav class="navbar">
+                <div class="navbar-brand">Learn<span>Me</span></div>
+                <div class="navbar-center">
+                    <section class="course-filter">
+                        <form method="get" action="{% url 'learnerApp:search_courses' %}">
+                            <input type="text" name="search" id="search" value="{{ request.GET.search }}" placeholder="Search courses">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learnerApp:course_list' %}">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learnerApp:category' %}">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learnerApp:profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    
+<section class="course-details">
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'learnerApp:course_list' %}">All Courses</a> &gt;
+        <span>{{ course.title }}</span>
+    </div>
+    <div class="detail-div">
+        <div class="detail-image">
+            {% if course.thumbnail %}
+            <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}" class="thumbnail" width="400px" height="300px">
+            {% else %}
+            <img src="{% static 'images/Dna thumbnail.png' %}" alt="Default Thumbnail" class="thumbnail">
+            {% endif %}
+        </div>
+    
+        <div class="course-info">
+            <p class="course-category">Development</p>
+            <p class="course-reviews">(4.5 Reviews)</p>
+            <h1>{{ course.title }}</h1>
+            
+            <div class="course-meta">
+                <div class="meta-item">
+                    {% for instructor in course.instructors.all %}
+                        <img src="{{ instructor.profile_picture.url }}" alt="{{ instructor.user.username }}" class="instructor-pic"> <!-- Use actual URL and name -->
+                        <span class="meta-label"></span> {{ instructor.user.username }}
+                    {% endfor %}
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i> <!-- Font Awesome calendar icon -->
+                    <span class="meta-label">Created at</span> {{ course.created_at|date:"d/m/Y" }}
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-graduation-cap"></i> <!-- Font Awesome graduation cap icon -->
+                    <span class="meta-label"></span> {{ total_students }} Students
+                </div>
+                
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-button" data-target="overview">Overview</button>
+                <button class="tab-button" data-target="curriculum">Curriculum</button>
+                <button class="tab-button" data-target="instructors">Instructors</button>
+                <button class="tab-button" data-target="reviews">Reviews</button>
+            </div>
+
+            <div id="overview" class="content-section">
+                <h2>Course Overview</h2>
+                <p>{{ course.description }}</p>
+            
+                <h3>What You Will Learn</h3>
+                <ul class="learning-outcomes">
+                    
+                    <li>{{ course.what_you_will_learn }}</li>
+                   
+                </ul>
+            
+                <h3>Course Features</h3>
+                <ul class="course-features">
+                    <li>Duration: {{ course.duration }} hours</li>
+                    
+                </ul>
+            </div>
+            
+           <div id="curriculum" class="content-section" style="display: none;">
+    <h2>Course Curriculum</h2>
+
+    {% for section in course.curriculum_items.all %}
+        <div class="curriculum-section">
+            <h3 class="section-title">{{ section.title }} 
+                • {{ section.lessons.count }} lectures
+            </h3>
+            <ul class="lecture-list">
+                {% for lesson in section.lessons.all %}
+                    <li class="lecture-item">
+                        <div class="left">
+                            <i class="fas fa-file-alt icon"></i>
+                            <span class="lecture-title">{{ lesson.title }}</span>
+                        </div>
+
+                        <div class="right">
+                            {% if lesson.is_preview %}
+                                <a href="{{ lesson.video_url }}" class="preview-link" target="_blank">Preview</a>
+                            {% elif user_enrolled %}
+                                <a href="{{ lesson.video_url }}" class="preview-link" target="_blank">Watch</a>
+                            {% else %}
+                                <span class="locked">Locked</span>
+                            {% endif %}
+                            <span class="lecture-duration">{{ lesson.duration }}</span>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li>No lessons yet</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+            
+                <div id="instructors" class="content-section" style="display: none;">
+                    <h2>Instructors</h2>
+                    {% for instructor in course.instructors.all %}
+                    <div class="instructor-details">
+                        <img src="{{ instructor.profile_picture.url }}" alt="{{ instructor.name }}" class="instructor-profile">
+                        <div class="instructor-info">
+                            <h3>{{ instructor.user.username }}</h3>
+                            
+                            <p class="position">{{ instructor.position }}</p>
+                            <p>{{ instructor.bio }}</p><h1>Feedback</h1>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            
+                <div id="reviews" class="content-section" style="display: none;">
+                    <h2>Reviews</h2>
+                    <p>Average Rating: {{ average_rating|default:"No ratings yet" }} / 5</p>
+                    <ul>
+                       {% for review in course_reviews %}
+                         <li>
+                            <strong>{{ review.user.username }}:</strong> Rated {{ review.rating }} / 5
+                            <p>{{ review.comment }}</p>
+                         </li>
+                         {% empty %}
+                         <p>No reviews for this course yet.</p>
+                        {% endfor %}
+</ul>
+                </div>
+            </div>
+            
+
+           
+            <div class="button-container">
+                {% if course.is_paid %}
+                    <a href="{% url 'learnerApp:payment_page' course.id %}" class="btn btn-primary">Enroll (Paid)</a>
+                {% else %}
+                    <a href="{% url 'learnerApp:enroll_free' course.id %}" class="btn btn-success">Enroll for Free</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    
+</section>
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+        const player = document.getElementById('video-player');
+        const source = player.querySelector('source');
+        const buttons = document.querySelectorAll('.play-video-btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const videoUrl = this.getAttribute('data-url');
+                const title = this.getAttribute('data-title');
+
+                source.src = videoUrl;
+                player.load();
+                player.play();
+
+                const titleElement = document.getElementById('video-title');
+                if (titleElement) {
+                    titleElement.textContent = title;
+                }
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.tab-button');
+        const sections = document.querySelectorAll('.content-section');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+
+                
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Hide all sections
+                sections.forEach(section => section.style.display = 'none');
+
+                // Show the clicked tab's content
+                document.getElementById(targetId).style.display = 'block';
+
+                // Add active class to the clicked button
+                button.classList.add('active');
+            });
+        });
+
+        // Optionally, activate the first tab by default
+        buttons[0].click();
+    });
+</script>
+</body>
+</html>
+

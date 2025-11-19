@@ -1,0 +1,76 @@
+/* Style for the Enrollment Modal */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.enroll-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+}
+
+h2 {
+    color: #007BFF;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #28a745;
+}
+
+h3 {
+    margin-top: 30px;
+    color: #343a40;
+}
+
+ul {
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+}

@@ -1,0 +1,53 @@
+{% extends 'base_admin.html' %}
+{% block title %}Manage Users{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Manage Users</h2>
+    <table class="table table-bordered table-striped mt-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Is Instructor?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.is_active %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-danger">Blocked</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user.instructor_profile %}
+                        ✅
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'AdminpanelApp:toggle-user-status' user.id %}" class="btn btn-sm btn-warning">
+                        {% if user.is_active %}Block{% else %}Unblock{% endif %}
+                    </a>
+
+                    {% if not user.instructor_profile %}
+                    <a href="{% url 'AdminpanelApp:promote-user' user.id %}" class="btn btn-sm btn-primary">
+                        Promote to Instructor
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

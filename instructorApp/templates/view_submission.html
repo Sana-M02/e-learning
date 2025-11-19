@@ -1,0 +1,26 @@
+{% extends 'base_instructor.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>All Submissions</h2>
+    {% for submission in submissions %}
+        <div style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 8px;">
+            <p><strong>Course:</strong> {{ submission.assignment.course.title }}</p>
+            <p><strong>Assignment:</strong> {{ submission.assignment.title }}</p>
+            <p><strong>Student:</strong> {{ submission.student.username }}</p>
+            <p><strong>Submitted at:</strong> {{ submission.submitted_at|date:"d M Y, H:i" }}</p>
+
+            {% if submission.text_submission %}
+                <p><strong>Text:</strong> {{ submission.text_submission }}</p>
+            {% endif %}
+            {% if submission.file_submission %}
+                <p><strong>File:</strong> <a href="{{ submission.file_submission.url }}" download>Download</a></p>
+            {% endif %}
+            {% if submission.link_submission %}
+                <p><strong>Link:</strong> <a href="{{ submission.link_submission }}" target="_blank">{{ submission.link_submission }}</a></p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No submissions yet.</p>
+    {% endfor %}
+{% endblock %}

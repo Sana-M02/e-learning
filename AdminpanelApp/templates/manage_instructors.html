@@ -1,0 +1,43 @@
+{% extends 'base_admin.html' %}
+{% block title %}Manage Instructors{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>All Instructors</h2>
+    <table class="table table-bordered table-striped mt-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Qualifications</th>
+                <th>Courses Count</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instructor in instructors %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ instructor.user.username }}</td>
+                <td>{{ instructor.user.email }}</td>
+                <td>{{ instructor.qualifications }}</td>
+                <td>{{ instructor.courses.count }}</td>
+                <td>
+                    <a href="{% url 'AdminpanelApp:view-instructor-profile' instructor.id %}" class="btn btn-sm btn-info">View Profile</a>
+                </td>
+                <td>
+    
+    
+    <a href="{% url 'AdminpanelApp:delete-instructor' instructor.id %}" 
+       class="btn btn-sm btn-danger" 
+       onclick="return confirm('Are you sure you want to delete this instructor?');">
+        Delete
+    </a>
+</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

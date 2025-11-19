@@ -1,0 +1,30 @@
+<!-- edit_user.html -->
+{% extends 'base_admin.html' %}
+
+{% block title %}Edit User - {{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>Edit User - {{ user.username }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.username.label }}: {{ form.username }}
+    </div>
+   
+    <div class="mb-3">
+        {{ form.email.label }}: {{ form.email }}
+    </div>
+    <div class="mb-3 form-check">
+        {{ form.is_active }} {{ form.is_active.label }} 
+    </div>
+    <div class="mb-3 form-check">
+        {{ form.is_staff }} {{ form.is_staff.label }} 
+    </div>
+    <div class="mb-3">
+        <label>Groups:</label>
+        {{ form.groups }}
+    </div>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    <a href="{% url 'AdminpanelApp:manage-users' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

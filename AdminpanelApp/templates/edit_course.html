@@ -1,0 +1,26 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Edit Course{% endblock %}
+
+{% block content %}
+<h1>Edit Course: {{ course.title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <label for="instructors">Instructors:</label>
+    <select name="instructors" id="instructors" multiple>
+        {% for instructor in instructors %}
+            <option value="{{ instructor.id }}"
+                {% if instructor.id in course_instructor_ids %}
+                    selected
+                {% endif %}
+            >{{ instructor.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'AdminpanelApp:manage-courses' %}">Cancel</a>
+{% endblock %}
